@@ -9,6 +9,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+/**
+ * @Description: 日期工具类
+ * @author ZhangXiaoNan
+ * @date 2017年9月12日 下午5:28:32
+ */
 public class DateUtil {
 	public final static SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
 	public final static SimpleDateFormat sdfDay = new SimpleDateFormat("yyyy-MM-dd");

@@ -71,7 +71,6 @@ public class Freemarker {
 	 */
 	public static Template getTemplate(String ftlName, String ftlPath) throws Exception {
 		try {
-			@SuppressWarnings("deprecation")
 			Configuration cfg = new Configuration(); // 通过Freemaker的Configuration读取相应的ftl
 			cfg.setEncoding(Locale.CHINA, "utf-8");
 			cfg.setDirectoryForTemplateLoading(new File(PathUtil.getClassResources() + "/" + ftlPath)); // 设定去哪里读取相应的ftl模板文件

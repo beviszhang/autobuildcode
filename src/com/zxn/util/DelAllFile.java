@@ -3,17 +3,17 @@ package com.zxn.util;
 import java.io.File;
 
 /**
- * java删除所有文件和文件夹
- * 创建人：FH 创建时间：2015年1月12日
- * @version
+ * @Description: java删除所有文件和文件夹
+ * @author ZhangXiaoNan
+ * @date 2017年9月12日 下午5:32:43
  */
 public class DelAllFile {
-	
+
 	public static void main(String args[]) {
-		delFolder("e:/e/a");			//只删除e下面a及a下面所有文件和文件夹,e不会被删掉
-		//delFolder("D:/WEBSerser/apache-tomcat-8.0.15/me-webapps/UIMYSQL/WEB-INF/classes/../../admin00/ftl/code");	
-		//delFolder("D:\\WEBSerser\\apache-tomcat-8.0.15\\me-webapps\\UIMYSQL\\admin00\\ftl\\code");
-		//delFolder("D:/WEBSerser/apache-tomcat-8.0.15/me-webapps/UIMYSQL/WEB-INF/classes/../../admin00/ftl/code");
+		delFolder("e:/e/a"); // 只删除e下面a及a下面所有文件和文件夹,e不会被删掉
+		// delFolder("D:/WEBSerser/apache-tomcat-8.0.15/me-webapps/UIMYSQL/WEB-INF/classes/../../admin00/ftl/code");
+		// delFolder("D:\\WEBSerser\\apache-tomcat-8.0.15\\me-webapps\\UIMYSQL\\admin00\\ftl\\code");
+		// delFolder("D:/WEBSerser/apache-tomcat-8.0.15/me-webapps/UIMYSQL/WEB-INF/classes/../../admin00/ftl/code");
 		System.out.println("deleted");
 	}
 
@@ -22,18 +22,19 @@ public class DelAllFile {
 	 */
 	public static void delFolder(String folderPath) {
 		try {
-			delAllFile(folderPath); 	// 删除完里面所有内容
+			delAllFile(folderPath); // 删除完里面所有内容
 			String filePath = folderPath;
 			filePath = filePath.toString();
 			java.io.File myFilePath = new java.io.File(filePath);
-			myFilePath.delete(); 		// 删除空文件夹
+			myFilePath.delete(); // 删除空文件夹
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * 删除指定文件夹下所有文件
+	 * 
 	 * @param path 文件夹完整绝对路径
 	 */
 	public static boolean delAllFile(String path) {
@@ -57,8 +58,8 @@ public class DelAllFile {
 				temp.delete();
 			}
 			if (temp.isDirectory()) {
-				delAllFile(path + "/" + tempList[i]);	// 先删除文件夹里面的文件
-				delFolder(path + "/" + tempList[i]);	// 再删除空文件夹
+				delAllFile(path + "/" + tempList[i]); // 先删除文件夹里面的文件
+				delFolder(path + "/" + tempList[i]); // 再删除空文件夹
 				flag = true;
 			}
 		}

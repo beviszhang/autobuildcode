@@ -11,7 +11,33 @@ import com.zxn.util.FileZip;
 import com.zxn.util.Freemarker;
 import com.zxn.util.PathUtil;
 
+/**
+ * @Description: spring jdbctemplate 自动生成代码
+ * @author ZhangXiaoNan
+ * @date 2017年9月12日 下午5:33:18
+ */
 public class BuildSpringJdbcCode {
+
+	public static void main(String[] args) {
+		try {
+			printCode("172.16.0.4", "lemonschool_test", "root", "zkpk", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @Description: 生成代码
+	 * @author ZhangXiaoNan
+	 * @date 2017年9月12日 下午5:37:04
+	 * @param dbUrl 数据库连接 例如:172.16.0.4
+	 * @param dbName 数据库名称
+	 * @param dbUser 数据库用户
+	 * @param dbPassword 数据库密码
+	 * @param tableName 表名(如果不指定表 则生成所有表)
+	 * @return
+	 * @throws Exception
+	 */
 	public static Object printCode(String dbUrl, String dbName, String dbUser, String dbPassword, String tableName) throws Exception {
 		DBConnect.setDbURL(dbUrl);
 		DBConnect.setDatabaseName(dbName);
@@ -23,7 +49,7 @@ public class BuildSpringJdbcCode {
 
 		String filePath = "code/springjdbc/temp/"; // 存放路径
 		String ftlPath = "com/zxn/ftl/springjdbc"; // ftl路径
-		String zipPath = "code/springjdbc/springJdbcCode.zip"; // ftl路径
+		String zipPath = "code/springjdbc/springJdbcCode.zip"; // 压缩包存放路径
 		boolean tableFlag = false;// 表不存在
 		for (List<Map<String, Object>> listMap : listListss) {
 			String packageName = listMap.get(0).get("dataBaseName").toString(); // 包名(数据库名)
@@ -48,7 +74,7 @@ public class BuildSpringJdbcCode {
 			root.put("fieldList", listMap);
 			root.put("columnNumber", listMap.size());
 			root.put("packageName", packageName.toLowerCase()); // 包名
-			root.put("tblName", tableDBName ); // 表名
+			root.put("tblName", tableDBName); // 表名
 			String objectNameUpper = objectName.substring(0, 1).toUpperCase() + objectName.substring(1);
 			root.put("objectNameUpper", objectNameUpper); // 类名
 			root.put("objectName", objectName); // 类变量名
@@ -111,11 +137,4 @@ public class BuildSpringJdbcCode {
 		return "success";
 	}
 
-	public static void main(String[] args) {
-		try {
-			printCode("172.16.0.4", "lemonschool_test", "root", "zkpk", null);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }

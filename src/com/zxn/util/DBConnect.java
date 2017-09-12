@@ -11,12 +11,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @Description: Mysql 数据库工具类
+ * @author ZhangXiaoNan
+ * @date 2017年9月12日 下午5:29:03
+ */
 public class DBConnect {
 	private static String dbURL = "";
 	private static String databaseName = "";
 	private static String dbUser = "";
 	private static String dbPassword = "";
 
+	/**
+	 * @Description: 获取数据库连接
+	 * @author ZhangXiaoNan
+	 * @date 2017年9月12日 下午5:29:22
+	 * @return
+	 */
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
@@ -34,11 +45,16 @@ public class DBConnect {
 		return conn;
 	}
 
+	/**
+	 * @Description: 获取数据库表信息
+	 * @author ZhangXiaoNan
+	 * @date 2017年9月12日 下午5:30:29
+	 * @return
+	 */
 	@SuppressWarnings("unused")
 	public static List<List<Map<String, Object>>> getAll() {
 		Connection conn = getConnection();
 
-		List<String> listTableName = new ArrayList<String>();
 		List<List<Map<String, Object>>> listListss = new ArrayList<List<Map<String, Object>>>();
 
 		try {
@@ -172,6 +188,13 @@ public class DBConnect {
 		}
 	}
 
+	/**
+	 * @Description: 数据库类型 转换java数据类型
+	 * @author ZhangXiaoNan
+	 * @date 2017年9月12日 下午5:31:02
+	 * @param javaType
+	 * @return
+	 */
 	private static String getClassNameForJavaType(int javaType) {
 		switch (javaType) {
 		case -7:
@@ -210,6 +233,7 @@ public class DBConnect {
 		return "java.lang.Object";
 	}
 
+	// ------------------------------get and set-----------------------------------------------
 	public static String getDbURL() {
 		return dbURL;
 	}
